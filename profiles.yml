@@ -1,0 +1,30 @@
+source:
+  target: dev
+  outputs:
+    dev:
+      type: mysql
+      server: localhost
+      port: 3306  # optional
+      database: dbt?allowPublicKeyRetrieval=True  # Change to your actual database name
+      schema: dbt  # Replace with your actual schema name
+      username: root  # Use your MySQL username
+      password: P@ssw0rd  # Use your MySQL password
+      driver: MySQL ODBC 8.0 ANSI Driver  # Ensure you have the driver installed
+    clickhouse_dev:
+      type: clickhouse
+      threads: 4  # Number of threads to use for dbt
+      host: localhost
+      port: 8123  # HTTP port for ClickHouse
+      database: default  # Replace with your ClickHouse database name
+      username: default  # Default ClickHouse username
+      password: ''  # Default ClickHouse password (leave empty if not set)
+      schema: your_clickhouse_schema  # Replace with your ClickHouse schema name
+    prod:
+      type: mysql
+      server: [server/host]  # Change to your production server
+      port: [port]  # optional
+      database: [schema]  # Replace with your production database
+      schema: [schema]  # Replace with your production schema
+      username: [username]  # Replace with your production username
+      password: [password]  # Replace with your production password
+      driver: MySQL ODBC 8.0 ANSI Driver
