@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_DATABASE: dbt
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  clickhouse:
+    image: yandex/clickhouse-server:latest  # Use the latest ClickHouse image
+    container_name: clickhouse
+    ports:
+      - "8123:8123"  # HTTP port
+      - "9000:9000"  # Native client port
+    volumes:
+      - /Users/victoria.kruczek/Desktop/Projekty/pinkFlamingos/clickhouse:/var/lib/clickhouse  # Persist data
+      
+volumes:
+  mysql_data:
